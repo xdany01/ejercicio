@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>Usuarios</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/bootstrap-5.2.1/css/bootstrap.min.css}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" th:href="@{/aos/aos.css}">
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+</head>
+<body class="container color-gray-800">
+<nav class="navbar navbar-light bg-transparent justify-content-end px-3">
+    <div class="btn-group">
+        <i class="bi bi-person-circle fs-4 dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static"
+           aria-expanded="false"></i>
+        <ul class="dropdown-menu dropdown-menu border-0 bg-light">
+            <li>
+                <a class="dropdown-item" sec:authorize="!isAuthenticated()" th:href="@{/login}">Login</a>
+            </li>
+            <li>
+                <a class="dropdown-item" sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/usuarios}">Usuarios</a>
+            </li>
+            <li>
+                <a class="dropdown-item" sec:authorize="isAuthenticated()" th:href="@{/logout}">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<h1 class="text-center">Lista de usuarios</h1>
+<div class="row d-flex justify-content-center align-items-center mt-5">
+    <div class="col-10">
+        <table class="table table-striped table-hover">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Username</th>
+                <th scope="col">Email</th>
+                <th scope="col">Rol</th>
+                <th scope="col">Estado</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="usuario : ${usuarios}">
+                <th scope="row" th:text="${usuario.id}"></th>
+                <td th:text="${usuario.username}"></td>
+                <td th:text="${usuario.email}"></td>
+                <td th:text="${usuario.rolEnum}"></td>
+                <td>
+                    <span th:if="${usuario.activo}" class="badge rounded-pill text-bg-success">Activo</span>
+                    <span th:unless="${usuario.activo}" class="badge rounded-pill text-bg-danger">Inactivo</span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script th:src="@{/bootstrap-5.2.1/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/js/tgs-player.js}"></script>
+<script th:src="@{/aos/aos.js}"></script>
+<script th:src="@{/js/main.js}"></script>
+</body>
+</html>

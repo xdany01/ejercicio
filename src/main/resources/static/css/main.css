@@ -1,0 +1,31 @@
+.bi.bi-person-circle.dropdown-toggle::after {
+    display: none;
+}
+
+.bi.bi-person-circle.dropdown-toggle {
+    cursor: pointer;
+}
+
+.fs-72 {
+    font-size: 72px;
+    line-height: 30px;
+}
+.fs-13{
+    font-size: 13px;
+    line-height: 5px;
+}
+.color-primary{
+    color: var(--bs-primary);
+}
+.color-gray-500{
+    color: var(--bs-gray-500);
+}
+.color-gray-800{
+    color: var(--bs-gray-800);
+}
+.card-hover{
+    transition: ease all .3s;
+}
+.card-hover:hover{
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
