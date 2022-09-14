@@ -35,28 +35,29 @@
             <div class="col-6 d-flex justify-content-center align-items-center"  data-aos="fade-in" data-aos-delay="350">
                 <lottie-player
                         autoplay
+                        loop
                         mode="normal"
-                        src="/json/data.json"
+                        th:src="@{/json/data.json}"
                         style="width: 200px;height: auto"
                 >
                 </lottie-player>
             </div>
             <div class="col-6">
                 <div class="card-body">
-                    <h2 class="card-title fs-72 mb-3" data-aos="fade-in" data-aos-delay="400" th:text="${{ciudad.tempDesc}}"/>
+                    <h2 class="card-title fs-72 mb-3" data-aos="fade-in" data-aos-delay="400" th:text="${ciudad.tempDesc}"/>
                     <p class="card-text m-0 fw-bold color-primary" data-aos="fade-in" data-aos-delay="500"
-                       th:text="${{ciudad.name}} + ', '+${{ciudad.province}}"/>
+                       th:text="${ciudad.name} + ', '+${ciudad.province}"/>
                     <ul class="list-group list-group-flush color-gray-500" data-aos="fade-in" data-aos-delay="550">
                         <li class="list-group-item border-0 py-1 px-0 bg-transparent"
-                            th:text="${{ciudad.description}}"/>
+                            th:text="${ciudad.description}"/>
                         <li class="list-group-item fs-13 border-0 px-0 bg-transparent">Humedad: <span
-                                th:text="${{ciudad.humidity}} + '%'"/></li>
+                                th:text="${ciudad.humidity} + '%'"/></li>
                         <li class="list-group-item fs-13 border-0 px-0 bg-transparent">Presión: <span
-                                th:text="${{ciudad.pressure}} + 'hPa'"/></li>
+                                th:text="${ciudad.pressure} + 'hPa'"/></li>
                         <li class="list-group-item fs-13 border-0 px-0 bg-transparent">Visibilidad: <span
-                                th:text="${{ciudad.visibility}} + 'km'"/></li>
+                                th:text="${ciudad.visibility} + 'km'"/></li>
                         <li class="list-group-item fs-13 border-0 px-0 bg-transparent">Viento: <span
-                                th:text="${{ciudad.wind_speed}} + 'km/h ' + ${{ciudad.wing_deg}}"/></li>
+                                th:text="${ciudad.wind_speed} + 'km/h ' + ${ciudad.wing_deg}"/></li>
                     </ul>
                 </div>
             </div>
@@ -67,7 +68,7 @@
     <h1 class="mb-5" data-aos="fade-down">Ciudades</h1>
     <ul class="list-group list-group-flush color-gray-500" data-aos="fade-in" data-aos-delay="550">
         <li th:each="ciudad : ${clima}" class="list-group-item border-0 py-1 px-0 bg-transparent"
-            th:text="${{ciudad.name}} + ', '+${{ciudad.province}}"/>
+            th:text="${ciudad.name} + ', '+${ciudad.province}"/>
     </ul>
 </div>
 <script th:src="@{/bootstrap-5.2.1/js/bootstrap.bundle.min.js}"></script>

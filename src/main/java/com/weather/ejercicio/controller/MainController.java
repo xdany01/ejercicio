@@ -1,9 +1,12 @@
 package com.weather.ejercicio.controller;
 
 import com.weather.ejercicio.dto.RegisterDto;
+import com.weather.ejercicio.model.Ciudad;
 import com.weather.ejercicio.service.ICiudadService;
 import com.weather.ejercicio.service.IUsuarioService;
 import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -13,8 +16,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.util.Date;
+import java.util.List;
 
 @AllArgsConstructor(onConstructor_ = {@Autowired})
+@Slf4j
 @Controller
 public class MainController {
 
@@ -25,6 +31,8 @@ public class MainController {
     public ModelAndView clima() {
         ModelAndView model = new ModelAndView("clima");
         model.addObject("clima", ciudadService.listAll());
+//        List<Ciudad> ciudades = ciudadService.listAll();
+//        ciudades.forEach(ciudad -> log.info(new Date(ciudad.getUpdated()).toString()));
         return model;
     }
 
